@@ -1,64 +1,41 @@
 # Project Status — Gillespie Fire Apparatus Check App
 
-**Last updated:** 2026-11-23 (post-fixes)  
-**Repo:** https://github.com/eradake-sudo/gillespie-fire-check-app  
-**Goal:** Client-side web app for monthly apparatus + SCBA checklists. Dark theme, mobile-friendly, localStorage drafts, print + PDF export.
+**Last updated:** 2026-11-23  
+**Goal:** Client-side web app for monthly apparatus and SCBA checklists. Dark theme, phone and tablet layout, drafts on the device, and one PDF button.
 
-## Current State
+## Current state
 
-Modular source files have been updated. Core functionality is now wired and closer to usable.
+The app is a static page: `index.html`, `app.js`, `styles.css`, and `data.js`. Checklist wording is unchanged from the department forms.
 
 ### What works
-- Unit selection grid
-- Dynamic checklist rendering from `data.js` (all 8 units)
-- Checkmark toggle buttons + notes fields
-- Signature pad (canvas) created dynamically by JS
-- PDF export (jsPDF CDN now included in `index.html`)
-- JSON export
-- Print CSS
-- Dark theme matching the department style
-- **Draft save/load** via localStorage (Save Draft button + automatic load when re-opening a unit)
 
-### Recently fixed (2026-11-23)
-- Button IDs synced: `#export-pdf-btn`, `#export-json-btn`, `#save-btn` are all wired in `app.js`.
-- jsPDF CDN added to `index.html`.
-- localStorage draft save + load implemented (`saveDraft`, `loadDraft`, keyed by unit).
-- JSON export handler added.
+- Eight units, in station order: Engine 1, Engine 2, Truck 3, Tanker 1, Squad 1, Squad 2, Brush Truck / UTV / Trailer, SCBA
+- Check boxes, notes, and **Mark section good**
+- One name field and one date field, in the checklist header
+- Date defaults to today. The name is remembered for the next unit
+- Progress line: how many items are checked, still open, and have notes
+- Signature pad on a white canvas, included on the PDF
+- Drafts save on their own. Reopening a unit restores checks, notes, name, date, pack count, and the signature
+- **Clear** deletes that unit's draft
+- **Export PDF** is the only way to finish a check. The PDF is letter size, with the department mark, summary counts, notes, and signature
+- PDF library is stored in `vendor/` so export does not depend on a CDN
+- Service worker caches the page for offline use after the first online visit
 
-### Remaining items
+### SCBA flow
 
-1. **Signature / completed-by duplication**
-   - Header has completed-by + date fields.
-   - JS also injects a second set inside the signature section.
-   - Prefer keeping the header ones and removing the duplicates from the injected signature HTML, or vice-versa.
+Apparatus units show their fixed pack and bottle sections. The SCBA unit starts with one pack. **Next pack** adds another. **Done, sign** reveals the signature. Added packs are part of the draft.
 
-2. **Logo**
-   - Still using the styled “FD” placeholder.
-   - Real Gillespie Fire Dept Maltese cross logo can be swapped in.
+### Not in this version
 
-3. **SCBA multi-pack flow**
-   - Needs end-to-end testing (Next Pack / Finished → signature).
+- Shared storage between people or devices
+- A history of submitted checks
+- Photo attachments
 
-4. **Signature restore in drafts**
-   - Draft load currently restores checks, notes, name, and date. Signature canvas restore is not yet implemented.
-
-5. **Optional improvements**
-   - Auto-save on change instead of only on button click.
-   - Service worker for offline PWA.
-   - Clear draft when form is cleared.
-
-## Recommended next steps (for Cursor)
-
-1. Remove duplicate completed-by/date fields (keep header versions).
-2. Test and polish the SCBA multi-pack + signature flow.
-3. Add signature canvas restore to `loadDraft()`.
-4. Swap in the real department logo.
-5. Optional: auto-save drafts, offline PWA support.
+Those need a place to store records. The check itself does not.
 
 ## File roles
-- `index.html` — shell + unit select + checklist view + jsPDF CDN
-- `styles.css` — dark theme, responsive, print styles
-- `app.js` — interaction, signature pad, PDF/JSON export, localStorage drafts
-- `data.js` — checklist definitions + SCBA item list
 
-A fully self-contained reference version is available as `standalone.html` (pushed separately).
+- `index.html` — shell, unit list, checklist header, action bar
+- `styles.css` — dark theme, phone layout, print styles
+- `app.js` — interaction, signature, drafts, and PDF export
+- `data.js` — checklist definitions and the shared SCBA lines

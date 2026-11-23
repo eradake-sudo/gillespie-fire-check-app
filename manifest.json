@@ -1,0 +1,18 @@
+{
+  "name": "Gillespie Fire Apparatus Checks",
+  "short_name": "Apparatus Checks",
+  "description": "Monthly apparatus and SCBA checklists for the Gillespie Fire Department.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#141414",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "200x200",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

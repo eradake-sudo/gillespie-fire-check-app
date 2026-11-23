@@ -2,52 +2,65 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apparatus & SCBA Monthly Checks</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#141414">
+  <meta name="description" content="Monthly apparatus and SCBA checklists for the Gillespie Fire Department.">
+  <title>Gillespie Fire · Apparatus Checks</title>
+  <link rel="icon" href="logo.png?v=5">
+  <link rel="apple-touch-icon" href="logo.png?v=5">
+  <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="styles.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="vendor/jspdf.umd.min.js"></script>
 </head>
 <body>
   <header>
     <div class="header-content">
-      <div class="logo-placeholder">FD</div>
+      <img class="logo" src="logo.png?v=5" alt="Gillespie Fire Department">
       <div>
         <h1>Apparatus Checks</h1>
-        <div class="subtitle">Monthly</div>
+        <div class="subtitle">Gillespie Fire Department · Monthly</div>
       </div>
     </div>
   </header>
 
   <main>
     <section id="unit-select" class="unit-select">
-      <h2>Select Unit</h2>
+      <p class="lede">Pick the unit you are checking. Tap the box when an item is good, and write a note when it is not. This device keeps a draft until you clear it. Export a PDF when the check is done.</p>
+      <h2>Select unit</h2>
       <div class="unit-grid" id="unit-grid"></div>
     </section>
 
     <section id="checklist-view" class="checklist-view hidden">
       <div class="checklist-header">
-        <button id="back-btn" class="btn secondary">← Back</button>
-        <h2 id="checklist-title" style="margin-top:0.5rem; text-transform:none; letter-spacing:0; font-size:1.15rem; color:white;"></h2>
+        <button id="back-btn" class="btn secondary" type="button">All units</button>
+        <h2 id="checklist-title"></h2>
+        <p id="progress-text" class="progress-text" aria-live="polite"></p>
         <div class="meta-fields">
-          <label>Completed by <input type="text" id="completed-by" placeholder="Initials or name"></label>
-          <label>Date <input type="date" id="check-date"></label>
+          <label>Completed by
+            <input type="text" id="completed-by" autocomplete="name" placeholder="Name">
+          </label>
+          <label>Date
+            <input type="date" id="check-date">
+          </label>
         </div>
       </div>
-
       <div id="checklist-content"></div>
-
-      <div class="actions">
-        <button id="save-btn" class="btn primary">Save Draft</button>
-        <button id="print-btn" class="btn secondary">Print</button>
-        <button id="export-pdf-btn" class="btn secondary">Export PDF</button>
-        <button id="export-json-btn" class="btn secondary">Export JSON</button>
-        <button id="clear-btn" class="btn danger">Clear</button>
-      </div>
     </section>
   </main>
 
+  <div id="dock" class="dock hidden">
+    <div id="scba-slot"></div>
+    <p id="save-state" class="save-state" aria-live="polite"></p>
+    <div class="actions">
+      <button id="export-pdf-btn" class="btn primary" type="button">Export PDF</button>
+      <button id="clear-btn" class="btn danger" type="button">Clear</button>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status"></div>
+
   <footer>
-    <p>Fire Department Apparatus Check System • Local draft storage only</p>
+    <p>Gillespie Fire Department · Drafts stay on this device</p>
   </footer>
 
   <script src="data.js"></script>
