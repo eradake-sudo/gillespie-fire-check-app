@@ -1,0 +1,27 @@
+# Cursor Rules — Gillespie Fire Check App
+
+You are helping build a client-side web app for Gillespie Fire Department monthly apparatus and SCBA checklists.
+
+## Context
+- Pure HTML/CSS/JS. No build step required.
+- Data lives in `data.js`. UI logic in `app.js`. Styles in `styles.css`.
+- Goal: reliable offline-capable checklist tool that firefighters can use on tablets/phones, print or export PDF, and keep drafts in localStorage.
+
+## Current priorities (see PROJECT_STATUS.md for details)
+1. Sync HTML button IDs with the handlers in `app.js` (`export-pdf-btn` vs `export-btn`, wire `save-btn`).
+2. Implement localStorage draft save/load (currently missing entirely).
+3. Add the jsPDF CDN script so PDF export works.
+4. Clean up the completed-by / date / signature section so there is only one set of fields.
+5. Replace the “FD” logo placeholder with the real department logo when available.
+
+## Style preferences
+- Keep the existing dark theme (black/red/yellow accents).
+- Prefer clear, readable code over clever one-liners.
+- Mobile-first responsive layout.
+- Do not introduce a framework or build system unless explicitly asked.
+
+## When making changes
+- Preserve the existing checklist data structure in `data.js`.
+- Test both normal apparatus units and the special SCBA multi-pack flow.
+- Keep print styles working.
+- Update PROJECT_STATUS.md if you resolve a listed issue.
