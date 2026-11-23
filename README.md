@@ -39,6 +39,6 @@ Item wording and the number of SCBA packs and bottles live in `data.js`. Leave t
 - `app.js` — checks, drafts, signature, and PDF export
 - `data.js` — the department's checklist lines
 - `styles.css` — dark theme, phone layout, print layout
-- `logo.png` — Gillespie Fire Department mark
+- `emblem.jpg` — Gillespie Fire Department mark
 - `vendor/jspdf.umd.min.js` — PDF library, stored locally so export works offline
 - `sw.js` and `manifest.json` — offline use after the first visit

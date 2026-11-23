@@ -1,11 +1,11 @@
-const CACHE = 'gfd-checks-v5';
+const CACHE = 'gfd-checks-v6';
 const FILES = [
   './',
   './index.html',
   './styles.css',
   './app.js',
   './data.js',
-  './logo.png',
+  './emblem.jpg',
   './manifest.json',
   './vendor/jspdf.umd.min.js'
 ];
