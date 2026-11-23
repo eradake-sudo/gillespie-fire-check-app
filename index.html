@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apparatus & SCBA Monthly Checks</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div class="logo-placeholder">FD</div>
+      <div>
+        <h1>Apparatus Checks</h1>
+        <div class="subtitle">Monthly</div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="unit-select" class="unit-select">
+      <h2>Select Unit</h2>
+      <div class="unit-grid" id="unit-grid"></div>
+    </section>
+
+    <section id="checklist-view" class="checklist-view hidden">
+      <div class="checklist-header">
+        <button id="back-btn" class="btn secondary">← Back</button>
+        <h2 id="checklist-title" style="margin-top:0.5rem; text-transform:none; letter-spacing:0; font-size:1.15rem; color:white;"></h2>
+        <div class="meta-fields">
+          <label>Completed by <input type="text" id="completed-by" placeholder="Initials or name"></label>
+          <label>Date <input type="date" id="check-date"></label>
+        </div>
+      </div>
+
+      <div id="checklist-content"></div>
+
+      <div class="actions">
+        <button id="save-btn" class="btn primary">Save Draft</button>
+        <button id="print-btn" class="btn secondary">Print</button>
+        <button id="export-btn" class="btn secondary">Export JSON</button>
+        <button id="clear-btn" class="btn danger">Clear</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Fire Department Apparatus Check System • Local draft storage only</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
